@@ -17,6 +17,8 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
+set_param xicom.use_bs_reader 1
+set_param chipscope.maxJobs 2
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -33,6 +35,12 @@ read_verilog -library xil_defaultlib -sv {
   /home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/DFF.sv
   /home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/DLatch.sv
   /home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/Register.sv
+  /home/rur1k/Vivado_projects/FlipFlopLabs/constraintsFolder/counter_n_bit.sv
+  /home/rur1k/Vivado_projects/FlipFlopLabs/constraintsFolder/decoder.sv
+  /home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/register_beh.sv
+  /home/rur1k/Vivado_projects/FlipFlopLabs/constraintsFolder/sev_seg_controller.sv
+  /home/rur1k/Vivado_projects/FlipFlopLabs/constraintsFolder/sev_seg_decoder.sv
+  /home/rur1k/Vivado_projects/FlipFlopLabs/constraintsFolder/sev_seg.sv
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -42,15 +50,18 @@ read_verilog -library xil_defaultlib -sv {
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+read_xdc /home/rur1k/Vivado_projects/FlipFlopLabs/constraintsFolder/pin-assignment.xdc
+set_property used_in_implementation false [get_files /home/rur1k/Vivado_projects/FlipFlopLabs/constraintsFolder/pin-assignment.xdc]
+
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
-synth_design -top Register -part xc7a100tcsg324-1
+synth_design -top sev_seg_top -part xc7a100tcsg324-1
 
 
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef Register.dcp
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file Register_utilization_synth.rpt -pb Register_utilization_synth.pb"
+write_checkpoint -force -noxdef sev_seg_top.dcp
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file sev_seg_top_utilization_synth.rpt -pb sev_seg_top_utilization_synth.pb"
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]
