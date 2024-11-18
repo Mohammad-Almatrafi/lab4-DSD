@@ -19,25 +19,29 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-// `include "DLatch.sv"
+`include "DLatch.sv"
 module DFF (
 
     input  clk,
     input  rst,
+    input en,
     input  d,
     output q,
     output nq
 );
-  logic nclk, qm, nn;
-  not n (nclk, clk);
-  DLatch a (
+  logic nclk, qm, ignored,andout1,andout2,nEn,dm;
+  not not1(nEn,en);
+  and and1(andout1, nEn,q);
+  and and2(andout2,en,d);
+  or or1(dm,andout1,andout2);
+  DLatch master (
       .en (nclk),
-      .d  (d),
+      .d  (dm),
       .rst(rst),
       .q  (qm),
-      .nq(nn)
+      .nq(ignored)
   );
-  DLatch b (
+  DLatch slave (
       .en (clk),
       .d  (qm),
       .rst(rst),

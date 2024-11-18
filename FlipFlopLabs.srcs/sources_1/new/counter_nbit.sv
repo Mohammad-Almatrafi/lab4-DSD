@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 11/17/2024 02:05:49 PM
+// Create Date: 11/18/2024 02:20:55 PM
 // Design Name: 
-// Module Name: Register
+// Module Name: counter_nbit
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -19,19 +19,26 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-// `include "DFF.sv"
-module Register (
+
+module counter_nbit #(
+    parameter n = 4
+) (
     input clk,
     input rst,
     input en,
-    input [3:0]d,
-    output [3:0]q
+    input load,
+    input up_down,
+    input [n-1:0] d,
+    output logic [n-1:0] q
 );
-logic w1,w2,w3,w4;
-
-    DFF a1(.clk(clk),.rst(rst),.en(en),.d(d[0]),.q(q[0]),.nq(w1));
-    DFF a2(.clk(clk),.rst(rst),.en(en),.d(d[1]),.q(q[1]),.nq(w2));
-    DFF a3(.clk(clk),.rst(rst),.en(en),.d(d[2]),.q(q[2]),.nq(w3));
-    DFF a4(.clk(clk),.rst(rst),.en(en),.d(d[3]),.q(q[3]),.nq(w4));
-
+  always_ff @(posedge clk, negedge rst) begin
+    if (~rst) q <= 0;
+    else if (en) begin
+      if (load) q <= d;
+      else begin
+        if (up_down) q <= q - 1;
+        else q <= q + 1;
+      end
+    end
+  end
 endmodule

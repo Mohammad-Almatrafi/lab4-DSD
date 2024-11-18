@@ -2,11 +2,12 @@
 2019.1
 May 24 2019
 14:51:52
-/home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.sim/sim_1/behav/xsim/glbl.v,1558713910,verilog,,,,glbl,,,,,,,,
-/home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sim_1/new/tb_D_FlipFlop.sv,1731847864,systemVerilog,,,,tb_D_FlipFlop,,,,,,,,
-/home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sim_1/new/tb_D_Latch.sv,1731847284,systemVerilog,,,,tb_D_Latch,,,,,,,,
-/home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sim_1/new/tb_Register.sv,1731850635,systemVerilog,,,,tb_Register,,,,,,,,
-/home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/DFF.sv,1731847369,systemVerilog,,/home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/DLatch.sv,,DFF,,,,,,,,
-/home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/DLatch.sv,1731847012,systemVerilog,,/home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sim_1/new/tb_D_Latch.sv,,DLatch,,,,,,,,
-/home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/Register.sv,1731849228,systemVerilog,,/home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/register_beh.sv,,Register,,,,,,,,
-/home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/register_beh.sv,1731850701,systemVerilog,,/home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sim_1/new/tb_Register.sv,,register_beh,,,,,,,,
+/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.sim/sim_1/behav/xsim/glbl.v,1558713910,verilog,,,,glbl,,,,,,,,
+/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sim_1/new/tb_counter_4bit.sv,1731940079,systemVerilog,,,,tb_counter_4bit,,,,,,,,
+/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/DFF.sv,1731930241,systemVerilog,,/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/DLatch.sv,/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/DLatch.sv,DFF,,,,,,,,
+/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/DLatch.sv,1731903363,systemVerilog,,/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/bit_add_sub.sv,,DLatch,,,,,,,,
+/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/bit_add_sub.sv,1731942259,systemVerilog,,/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/bit_adder.sv,,bit_add_sub,,,,,,,,
+/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/bit_adder.sv,1731942258,systemVerilog,,/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/counter_4bit.sv,,bit_adder,,,,,,,,
+/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/counter_4bit.sv,1731943677,systemVerilog,,/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/full_adder.sv,/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/DFF.sv;/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/comb_logic.sv;/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/mux2x1.sv;/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/top_logic.sv;/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/bit_add_sub.sv,counter_4bit,,,,,,,,
+/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/full_adder.sv,1731942954,systemVerilog,,/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/half_adder.sv,,full_adder,,,,,,,,
+/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/half_adder.sv,1731942257,systemVerilog,,/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sim_1/new/tb_counter_4bit.sv,,half_adder,,,,,,,,
