@@ -17,28 +17,30 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
+set_param xicom.use_bs_reader 1
+set_param chipscope.maxJobs 2
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir /home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.cache/wt [current_project]
-set_property parent.project_path /home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.xpr [current_project]
+set_property webtalk.parent_dir /home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.cache/wt [current_project]
+set_property parent.project_path /home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part digilentinc.com:nexys-a7-100t:part0:1.3 [current_project]
-set_property ip_output_repo /home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.cache/ip [current_project]
+set_property ip_output_repo /home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib -sv {
-  /home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/DFF.sv
-  /home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/DLatch.sv
-  /home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/Register.sv
-  /home/rur1k/Vivado_projects/FlipFlopLabs/constraintsFolder/counter_n_bit.sv
-  /home/rur1k/Vivado_projects/FlipFlopLabs/constraintsFolder/decoder.sv
-  /home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/register_beh.sv
-  /home/rur1k/Vivado_projects/FlipFlopLabs/constraintsFolder/sev_seg_controller.sv
-  /home/rur1k/Vivado_projects/FlipFlopLabs/constraintsFolder/sev_seg_decoder.sv
-  /home/rur1k/Vivado_projects/FlipFlopLabs/constraintsFolder/sev_seg.sv
+  /home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/DFF.sv
+  /home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/DLatch.sv
+  /home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/Register.sv
+  /home/rur1k/Vpro/FlipFlopLabs/constraintsFolder/counter_n_bit.sv
+  /home/rur1k/Vpro/FlipFlopLabs/constraintsFolder/decoder.sv
+  /home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.srcs/sources_1/new/register_beh.sv
+  /home/rur1k/Vpro/FlipFlopLabs/constraintsFolder/sev_seg_controller.sv
+  /home/rur1k/Vpro/FlipFlopLabs/constraintsFolder/sev_seg_decoder.sv
+  /home/rur1k/Vpro/FlipFlopLabs/constraintsFolder/sev_seg.sv
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -48,8 +50,8 @@ read_verilog -library xil_defaultlib -sv {
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc /home/rur1k/Vivado_projects/FlipFlopLabs/constraintsFolder/pin-assignment.xdc
-set_property used_in_implementation false [get_files /home/rur1k/Vivado_projects/FlipFlopLabs/constraintsFolder/pin-assignment.xdc]
+read_xdc /home/rur1k/Vpro/FlipFlopLabs/constraintsFolder/Nexys-A7-100T-Master.xdc
+set_property used_in_implementation false [get_files /home/rur1k/Vpro/FlipFlopLabs/constraintsFolder/Nexys-A7-100T-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

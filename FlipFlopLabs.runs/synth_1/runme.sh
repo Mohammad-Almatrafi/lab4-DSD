@@ -20,7 +20,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='/home/rur1k/Vivado_projects/FlipFlopLabs/FlipFlopLabs.runs/synth_1'
+HD_PWD='/home/rur1k/Vpro/FlipFlopLabs/FlipFlopLabs.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

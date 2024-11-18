@@ -4,7 +4,7 @@ module seven_seg_decoder(
 );
 
 // Add your code here -----------------------------------
-
+    assign seg[0] = ((~bin[1]&bin[0]&~bin[3]&~bin[2])|(~bin[1]&~bin[0]&~bin[3]&bin[2])|(~bin[1]&bin[0]&bin[3]&bin[2])|(bin[1]&bin[0]&bin[3]&~bin[2]));//a
     assign seg[1] =((bin[1]&~bin[0]&bin[2])|(bin[1]&bin[3]&bin[0])|(~bin[0]&bin[3]&bin[2])|(~bin[1]&bin[0]&~bin[3]&bin[2]));//b
     assign seg[2] =((bin[1]&bin[3]&bin[2])|(~bin[0]&bin[3]&bin[2])|(bin[1]&~bin[0]&~bin[3]&~bin[2]));//c
     assign seg[3] =((bin[1]&bin[0]&bin[2])|(~bin[1]&bin[0]&~bin[3]&~bin[2])|(~bin[1]&~bin[0]&~bin[3]&bin[2])|(bin[1]&~bin[0]&bin[3]&~bin[2]));//d
