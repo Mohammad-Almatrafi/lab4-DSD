@@ -1,7 +1,8 @@
 `timescale 1ns / 1ps
 
 module tb_counter_4bit ();
-  logic clk, rst, load, switch;
+  logic clk = 0;
+  logic rst, load,  switch;
   logic [3:0] d, q;
   counter_4bit test (
       .clk(clk),
@@ -11,29 +12,36 @@ module tb_counter_4bit ();
       .d(d),
       .q(q)
   );
+  always #5 clk = ~clk;
   initial begin
-    rst = 1'b1;
-    #1
-    rst = 1'b0;
-    #2
-    clk = 1'b0;
-    rst = 1'b1;
-    load = 1'b1;
-    switch = 1'b0;
+    rst = 1;
+    load = 0;
     d = 0;
+    switch = 0;
 
-    repeat (36) begin #3 clk = ~clk; d = d+1;end
-    load = 1'b0;
-    repeat (8) #3 clk = ~clk;
-    switch = 1'b1;
-    repeat(36) #3 clk = ~clk;
-    load = 1'b1;
-    
-    repeat(8)begin 
-        #3 clk = ~clk;
-        d = d+1;
+    #5 rst = 0;
+    #5 rst = 1;
+
+    repeat (18) @(negedge clk);
+
+    @(negedge clk) rst = 0;
+
+    @(negedge clk) begin
+      rst = 1;
+      switch = 1;
     end
-    $finish;
+
+    repeat (18) @(negedge clk);
+
+    @(negedge clk) load = 1;
+    
+    @(negedge clk) d = 3;
+    @(negedge clk) load = 0;
+    
+    @(negedge clk) d = 8;
+    repeat (18) @(negedge clk);
+
+    @(negedge clk) $finish;
   end
 
 endmodule

@@ -1,6 +1,19 @@
 `timescale 1ns / 1ps
 // `include "adder/modules/bit_add_sub.sv"
 // `include "DFF/modules/DFF.sv"
+module TFF(input clk,input rst,input T,input Q);
+assign wq = q;
+assign dm = T ? ~wq : wq;
+  DFF FF1 (
+      .clk(clk),
+      .rst(rst),
+      .en (1'b1),
+      .d  (T),
+      .q  (q)
+  );
+
+
+endmodule
 module counter_4bit (
     input clk,
     input load,
@@ -10,48 +23,44 @@ module counter_4bit (
     output [3:0] q
 );
 
-  logic [3:0] wq, dm, nq,result;
-  logic ignore;
-
-  bit_add_sub nn (
-      up_down,
-      wq,
-      4'b0001,
-      result,
-      ignore
-  );
-  assign dm = load ? d:result;
+  logic [3:0] wq, dm, sub_result, add_result, result;
+   assign sub_result[0] = ~wq[0];
+  assign sub_result[1] = ~wq[0] ^ wq[1];
+  assign sub_result[2] =  &(~wq[1:0]) ^ wq[2];
+  assign sub_result[3] =  &(~wq[2:0]) ^ wq[3];
+  assign add_result[0] = ~wq[0];
+  assign add_result[1] = wq[0] ^ wq[1];
+  assign add_result[2] = &wq[1:0] ^ wq[2];
+  assign add_result[3] = &wq[2:0] ^ wq[3];
+  assign result = up_down ? sub_result : add_result;
+  assign dm = load ? d : result;
   DFF FF1 (
       .clk(clk),
       .rst(rst),
       .en (1'b1),
       .d  (dm[0]),
-      .q  (q[0]),
-      .nq (nq[0])
+      .q  (q[0])
   );
   DFF FF2 (
       .clk(clk),
       .rst(rst),
       .en (1'b1),
       .d  (dm[1]),
-      .q  (q[1]),
-      .nq (nq[1])
+      .q  (q[1])
   );
   DFF FF3 (
       .clk(clk),
       .rst(rst),
       .en (1'b1),
       .d  (dm[2]),
-      .q  (q[2]),
-      .nq (nq[2])
+      .q  (q[2])
   );
   DFF FF4 (
       .clk(clk),
       .rst(rst),
       .en (1'b1),
       .d  (dm[3]),
-      .q  (q[3]),
-      .nq (nq[3])
+      .q  (q[3])
   );
   assign wq = q;
 endmodule
