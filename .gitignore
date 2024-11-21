@@ -1,2 +1,4 @@
-FlipFlopLabs.srcs
-FlipFlopLabs.sim
+*
+~src
+~FlipFlopsLabs.runs
+~FlipFlopsLabs.xpr
