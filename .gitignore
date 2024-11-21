@@ -1,0 +1,7 @@
+*
+!.gitignore
+!src
+!src/** 
+!FlipFlopLabs.runs
+!FlipFlopLabs.runs/** 
+!FlipFlopLabs.xpr
